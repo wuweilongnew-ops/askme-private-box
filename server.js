@@ -187,9 +187,6 @@ function createApp(options = {}) {
     const mood = sanitizeText(body.mood, 24) || "认真提问";
     const promptTag = sanitizeText(body.promptTag, 60);
 
-    if (impression.length < 2 || strength.length < 2 || weakness.length < 2) {
-      return { error: "提问前的三个问题都需要认真回答，至少写 2 个字。" };
-    }
     if (question.length < 3) {
       return { error: "提问内容至少需要 3 个字。" };
     }

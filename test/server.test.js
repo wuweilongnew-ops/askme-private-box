@@ -209,6 +209,43 @@ test("owner password can be provided by configuration", async () => {
   }
 });
 
+test("question can be submitted without optional personal prompts", async () => {
+  const server = await startTestServer();
+  try {
+    const created = await request(server.baseUrl, "/api/questions", {
+      method: "POST",
+      body: JSON.stringify(
+        validQuestion({
+          preAnswers: {
+            impression: "",
+            strength: "",
+            weakness: ""
+          }
+        })
+      )
+    });
+
+    assert.equal(created.response.status, 201);
+    assert.equal(created.data.question.preAnswers.impression, "");
+    assert.equal(created.data.question.preAnswers.strength, "");
+    assert.equal(created.data.question.preAnswers.weakness, "");
+  } finally {
+    await server.close();
+  }
+});
+
+test("homepage exposes share card metadata", async () => {
+  const server = await startTestServer();
+  try {
+    const page = await requestText(server.baseUrl, "/");
+    assert.equal(page.response.status, 200);
+    assert.match(page.text, /property="og:image" content="https:\/\/askme-private-box\.onrender\.com\/share-card\.png"/);
+    assert.match(page.text, /有空的话，来问我一个问题吧。/);
+  } finally {
+    await server.close();
+  }
+});
+
 test("quiz answer uses thick-crust pizza preference", async () => {
   const source = await fs.readFile(path.join(__dirname, "../public/app.js"), "utf8");
   assert.match(

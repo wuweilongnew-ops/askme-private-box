@@ -4,10 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>我的自由提问箱</title>
-    <meta name="description" content="一个自由、可以匿名、双方同意才公开的私人提问箱。" />
+    <meta name="description" content="有空的话，来问我一个问题吧。可以匿名，也可以只让我们两个人知道。" />
     <meta property="og:title" content="我的自由提问箱" />
-    <meta property="og:description" content="可以匿名提问，也可以只让我们两个人知道。" />
+    <meta property="og:description" content="有空的话，来问我一个问题吧。" />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://askme-private-box.onrender.com/" />
+    <meta property="og:image" content="https://askme-private-box.onrender.com/share-card.png" />
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="600" />
+    <link rel="image_src" href="https://askme-private-box.onrender.com/share-card.png" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/styles.css" />
   </head>
@@ -47,21 +52,22 @@
 
           <form class="ask-panel doodle-panel" id="askForm">
             <div class="panel-heading">
-              <p class="eyebrow">先回答三句真心话</p>
-              <h2>再向我提问</h2>
+              <p class="eyebrow">我想知道的三件事</p>
+              <h2>愿意的话，也告诉我这些</h2>
+              <p class="panel-note">这三题不是提问门槛，只是我真的有点想知道。你可以认真写，也可以留空直接提问。</p>
             </div>
 
             <label>
               <span>1. 在你眼里我是个什么样的人</span>
-              <textarea name="impression" maxlength="280" required placeholder="可以坦诚，也可以温柔一点。"></textarea>
+              <textarea name="impression" maxlength="280" placeholder="可以坦诚，也可以温柔一点。愿意写就好。"></textarea>
             </label>
             <label>
               <span>2. 我最大的优点是什么</span>
-              <textarea name="strength" maxlength="280" required placeholder="写下你最先想到的那个点。"></textarea>
+              <textarea name="strength" maxlength="280" placeholder="写下你最先想到的那个点，也可以先跳过。"></textarea>
             </label>
             <label>
               <span>3. 我最大的缺点是什么</span>
-              <textarea name="weakness" maxlength="280" required placeholder="允许认真吐槽，但请保持善意。"></textarea>
+              <textarea name="weakness" maxlength="280" placeholder="允许认真吐槽，但请保持善意。"></textarea>
             </label>
 
             <div class="field-grid">
@@ -136,7 +142,7 @@
           <div>
             <p class="eyebrow">把这个小盒子递出去</p>
             <h2>分享给朋友，让大家自由提问</h2>
-            <p>分享出去的是普通用户页面，不会带主人入口。微信里可以点右上角菜单分享到朋友圈。</p>
+            <p>分享出去的是普通用户页面，不会带主人入口。已配置朋友圈卡片标题、描述和缩略图。</p>
           </div>
           <button type="button" class="primary-button" id="shareSiteInline">分享这个网页</button>
         </section>
@@ -237,7 +243,7 @@
         <p class="eyebrow">分享提示</p>
         <h2 id="shareSheetTitle">把普通用户页分享出去</h2>
         <p id="shareHint">
-          如果你在微信里打开，请点右上角“...”菜单，选择“分享到朋友圈”或“发送给朋友”。
+          如果你在微信里打开，请点右上角“...”菜单，选择“分享到朋友圈”或“发送给朋友”。朋友圈会尽量使用本站配置的标题、描述和缩略图。
         </p>
         <div class="code-box" id="shareLinkText"></div>
         <button type="button" class="primary-button" id="copyShareLink">复制分享链接</button>

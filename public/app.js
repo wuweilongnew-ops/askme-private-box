@@ -6,7 +6,7 @@ const state = {
 };
 
 const SHARE_TITLE = "我的自由提问箱";
-const SHARE_TEXT = "这里可以自由提问，可以完全匿名，也可以只让我们两个人知道。";
+const SHARE_TEXT = "有空的话，来问我一个问题吧。";
 
 const quizQuestions = [
   {
@@ -180,8 +180,8 @@ function openShareSheet() {
   const url = getShareUrl();
 
   hint.textContent = isWeChatBrowser()
-    ? "如果你在微信里打开，请点右上角“...”菜单，选择“分享到朋友圈”或“发送给朋友”。"
-    : "当前浏览器不能直接打开微信朋友圈。你可以复制链接，发到微信后再从微信右上角分享到朋友圈。";
+    ? "如果你在微信里打开，请点右上角“...”菜单，选择“分享到朋友圈”或“发送给朋友”。朋友圈会尽量使用本站配置的标题、描述和缩略图。"
+    : "当前浏览器不能直接打开微信朋友圈。你可以复制链接，发到微信后再从微信右上角分享到朋友圈，卡片信息已经配置好。";
   linkText.textContent = url;
   copyButton.textContent = "复制分享链接";
   sheet.classList.remove("is-hidden");

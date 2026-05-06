@@ -3,3 +3,4 @@ server.out.log
 server.err.log
 .playwright-mcp/
 *.png
+!public/share-card.png
