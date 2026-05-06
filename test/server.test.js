@@ -246,6 +246,17 @@ test("homepage exposes share card metadata", async () => {
   }
 });
 
+test("share card image is served as png", async () => {
+  const server = await startTestServer();
+  try {
+    const response = await fetch(`${server.baseUrl}/share-card.png`);
+    assert.equal(response.status, 200);
+    assert.equal(response.headers.get("content-type"), "image/png");
+  } finally {
+    await server.close();
+  }
+});
+
 test("quiz answer uses thick-crust pizza preference", async () => {
   const source = await fs.readFile(path.join(__dirname, "../public/app.js"), "utf8");
   assert.match(
