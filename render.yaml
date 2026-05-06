@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: askme-private-box
+    env: node
+    plan: free
+    buildCommand: npm install --omit=dev
+    startCommand: node server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: OWNER_PASSWORD
+        sync: false
+      - key: DATA_FILE
+        value: /tmp/askme/questions.json
+      - key: RETENTION_DAYS
+        value: 3

@@ -1,0 +1,7 @@
+data/
+test/
+.git/
+.playwright-mcp/
+*.log
+*.png
+node_modules/

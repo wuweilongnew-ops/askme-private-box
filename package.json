@@ -1,0 +1,20 @@
+{
+  "name": "askme-private-box",
+  "version": "1.0.0",
+  "description": "A privacy-first personal question box with mutual public consent.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "keywords": [
+    "question-box",
+    "privacy",
+    "anonymous"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}

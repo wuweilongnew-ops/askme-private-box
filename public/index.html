@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>我的自由提问箱</title>
+    <meta name="description" content="一个自由、可以匿名、双方同意才公开的私人提问箱。" />
+    <meta property="og:title" content="我的自由提问箱" />
+    <meta property="og:description" content="可以匿名提问，也可以只让我们两个人知道。" />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar" aria-label="主导航">
+        <a class="brand" href="#ask" aria-label="回到提问区">
+          <span class="avatar" aria-hidden="true">ME</span>
+          <span>
+            <strong>我的自由提问箱</strong>
+            <small>匿名、克制公开、认真回答</small>
+          </span>
+        </a>
+        <nav class="nav-pills">
+          <a href="#ask">提问</a>
+          <a href="#quiz">默契问答</a>
+          <a href="#wall">公开墙</a>
+          <button type="button" id="shareSite">分享</button>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero-section" id="ask">
+          <div class="hero-copy">
+            <p class="eyebrow">自由、可以匿名，也可以只让我们两个人知道</p>
+            <h1>有什么想问我的，就把它放进这个小盒子里。</h1>
+            <p class="hero-text">
+              这里不追踪身份，不做公开排名。问题只有在“你选择公开”且“我也选择公开”时，才会出现在公开墙；回答是否公开也由我单独确认。
+            </p>
+            <div class="privacy-strip" role="list" aria-label="隐私规则">
+              <span role="listitem">可完全匿名</span>
+              <span role="listitem">可仅双方知道</span>
+              <span role="listitem">双方同意才公开</span>
+              <span role="listitem">私密内容不进公开接口</span>
+            </div>
+          </div>
+
+          <form class="ask-panel doodle-panel" id="askForm">
+            <div class="panel-heading">
+              <p class="eyebrow">先回答三句真心话</p>
+              <h2>再向我提问</h2>
+            </div>
+
+            <label>
+              <span>1. 在你眼里我是个什么样的人</span>
+              <textarea name="impression" maxlength="280" required placeholder="可以坦诚，也可以温柔一点。"></textarea>
+            </label>
+            <label>
+              <span>2. 我最大的优点是什么</span>
+              <textarea name="strength" maxlength="280" required placeholder="写下你最先想到的那个点。"></textarea>
+            </label>
+            <label>
+              <span>3. 我最大的缺点是什么</span>
+              <textarea name="weakness" maxlength="280" required placeholder="允许认真吐槽，但请保持善意。"></textarea>
+            </label>
+
+            <div class="field-grid">
+              <fieldset>
+                <legend>你想怎么出现</legend>
+                <label class="choice-card">
+                  <input type="radio" name="identityMode" value="anonymous" checked />
+                  <span>完全匿名</span>
+                  <small>我也不知道你是谁</small>
+                </label>
+                <label class="choice-card">
+                  <input type="radio" name="identityMode" value="known" />
+                  <span>仅双方知道</span>
+                  <small>只有我和你看得到称呼</small>
+                </label>
+              </fieldset>
+
+              <fieldset>
+                <legend>你对问题的公开意愿</legend>
+                <label class="choice-card">
+                  <input type="radio" name="askerQuestionVisibility" value="public" />
+                  <span>愿意公开</span>
+                  <small>仍需主人同意</small>
+                </label>
+                <label class="choice-card">
+                  <input type="radio" name="askerQuestionVisibility" value="private" checked />
+                  <span>仅双方可见</span>
+                  <small>不会进入公开墙</small>
+                </label>
+              </fieldset>
+            </div>
+
+            <label class="known-name is-hidden" id="knownNameField">
+              <span>给我看的称呼</span>
+              <input name="askerName" maxlength="32" placeholder="例如：坐第三排的人" />
+            </label>
+
+            <div class="prompt-row" aria-label="提问灵感">
+              <button type="button" class="tiny-button" data-prompt="有没有哪件小事会让你突然开心？">开心小事</button>
+              <button type="button" class="tiny-button" data-prompt="你最近最想认真聊的话题是什么？">认真话题</button>
+              <button type="button" class="tiny-button" data-prompt="如果给现在的自己一句提醒，你会写什么？">一句提醒</button>
+              <button type="button" class="tiny-button" data-prompt="有什么问题是你一直想被别人问到的？">反向提问</button>
+            </div>
+
+            <label>
+              <span>你的问题</span>
+              <textarea name="question" class="question-box" maxlength="500" required placeholder="放心写。这个网站的默认姿态是保护隐私，而不是把人推到台前。"></textarea>
+            </label>
+
+            <label>
+              <span>这条问题的语气标签</span>
+              <select name="mood">
+                <option>认真提问</option>
+                <option>好奇一下</option>
+                <option>想夸你</option>
+                <option>悄悄说</option>
+                <option>脑洞问题</option>
+              </select>
+            </label>
+
+            <input type="hidden" name="promptTag" />
+            <button class="primary-button" type="submit">把问题投进小盒子</button>
+            <p class="form-note">
+              发送后会生成一个提问码。请保管好它，之后可以用它查看只有你和我能看到的回答。
+            </p>
+          </form>
+        </section>
+
+        <section class="status-card is-hidden" id="submitResult" aria-live="polite"></section>
+
+        <section class="share-card doodle-panel" aria-label="分享这个提问箱">
+          <div>
+            <p class="eyebrow">把这个小盒子递出去</p>
+            <h2>分享给朋友，让大家自由提问</h2>
+            <p>分享出去的是普通用户页面，不会带主人入口。微信里可以点右上角菜单分享到朋友圈。</p>
+          </div>
+          <button type="button" class="primary-button" id="shareSiteInline">分享这个网页</button>
+        </section>
+
+        <section class="two-column-section">
+          <div class="doodle-panel lookup-panel">
+            <div class="panel-heading">
+              <p class="eyebrow">只看自己的问题</p>
+              <h2>用提问码查看私密回复</h2>
+            </div>
+            <form id="lookupForm" class="lookup-form">
+              <input name="code" placeholder="粘贴你的提问码" autocomplete="off" />
+              <button type="submit">查看</button>
+            </form>
+            <div id="lookupResult" class="private-result"></div>
+          </div>
+
+          <div class="doodle-panel fun-panel">
+            <div class="panel-heading">
+              <p class="eyebrow">提问前的小提示</p>
+              <h2>这里很自由，也很有边界</h2>
+            </div>
+            <ul class="soft-list">
+              <li>可以问轻松的问题，也可以问认真一点的问题。</li>
+              <li>可以完全匿名，或者留下只有我们双方知道的称呼。</li>
+              <li>你选公开不等于马上公开，我也必须同意公开。</li>
+              <li>不舒服的问题可以被保持私密，回答也可以只给你看。</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="quiz-section" id="quiz">
+          <div class="section-title">
+            <p class="eyebrow">默契问答</p>
+            <h2>看看你对我有多了解</h2>
+          </div>
+          <form class="quiz-grid" id="quizForm"></form>
+          <div class="quiz-result doodle-panel is-hidden" id="quizResult"></div>
+        </section>
+
+        <section class="wall-section" id="wall">
+          <div class="section-title">
+            <p class="eyebrow">公开墙</p>
+            <h2>双方都同意公开的问题</h2>
+            <p>
+              这里不会出现仅双方可见的问题，也不会出现未被主人确认公开的问题。
+            </p>
+          </div>
+          <div class="public-wall" id="publicWall"></div>
+        </section>
+
+        <section class="owner-section is-hidden" id="owner">
+          <div class="section-title">
+            <p class="eyebrow">私人主人入口</p>
+            <h2>只有主人可以进入这里</h2>
+            <p>
+              这是你的专属管理页。普通访问者打开分享链接时只会看到提问、默契问答和公开墙。
+            </p>
+          </div>
+          <div class="doodle-panel owner-login" id="ownerLogin">
+            <form id="ownerLoginForm">
+              <label>
+                <span>主人口令</span>
+                <input name="password" type="password" autocomplete="current-password" placeholder="请输入主人密钥" />
+              </label>
+              <button class="primary-button" type="submit">进入主人面板</button>
+            </form>
+            <p class="form-note">
+              主人密钥只用于进入管理页；部署到公网时仍建议用环境变量 OWNER_PASSWORD 管理它。
+            </p>
+          </div>
+          <div class="owner-dashboard is-hidden" id="ownerDashboard">
+            <div class="dashboard-head">
+              <p>你可以先决定问题是否公开，再写回答。公开回答必须建立在双方都同意公开问题的前提上。</p>
+              <button type="button" id="refreshOwner">刷新问题</button>
+            </div>
+            <div id="ownerQuestions" class="owner-list"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <template id="publicQuestionTemplate">
+      <article class="question-card">
+        <div class="card-meta">
+          <span data-field="identity"></span>
+          <span data-field="mood"></span>
+        </div>
+        <h3 data-field="question"></h3>
+        <p class="answer" data-field="answer"></p>
+        <p class="quiz-line" data-field="quiz"></p>
+      </article>
+    </template>
+
+    <div class="share-sheet is-hidden" id="shareSheet" role="dialog" aria-modal="true" aria-labelledby="shareSheetTitle">
+      <div class="share-sheet-card doodle-panel">
+        <button type="button" class="sheet-close" id="closeShareSheet" aria-label="关闭分享提示">×</button>
+        <p class="eyebrow">分享提示</p>
+        <h2 id="shareSheetTitle">把普通用户页分享出去</h2>
+        <p id="shareHint">
+          如果你在微信里打开，请点右上角“...”菜单，选择“分享到朋友圈”或“发送给朋友”。
+        </p>
+        <div class="code-box" id="shareLinkText"></div>
+        <button type="button" class="primary-button" id="copyShareLink">复制分享链接</button>
+      </div>
+    </div>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>
